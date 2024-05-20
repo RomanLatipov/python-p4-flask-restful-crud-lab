@@ -49,7 +49,7 @@ class PlantByID(Resource):
     
     def patch(self, id):
         plant = Plant.query.filter(Plant.id == id).first()
-        for key in request.keys():
+        for key in request.json.keys():
             setattr(plant, key, request.json[key])
 
         db.session.add(plant)
